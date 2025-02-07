@@ -6,6 +6,9 @@ const dotenv = require('dotenv');
 // load environment variables
 dotenv.config();
 
+// import routes
+const trendsRoutes = require('./src/routes/trendsRoutes');
+
 // initialize express app
 const app = express();
 
@@ -17,6 +20,9 @@ app.use(express.json());
 app.get('/health', (req, res) => {
     res.json({ status: 'ok', message: 'Server is running' });
 });
+
+// routes
+app.use('/api', trendsRoutes);
 
 // define port
 const PORT = process.env.PORT || 3001;
